@@ -1,7 +1,9 @@
 通过8种情况演示锁运行案例，看看我们到底锁的是什么。
 输出结果我会放在最底下。可以思考一下，然后对照，代码都是基于Java8运行。
+
 # 案例：
-**情况1：标准访问有a b两个线程，请问先打印邮件还是短信 ? **
+**情况1：标准访问有a b两个线程，请问先打印邮件还是短信 ?**
+
 ```java
 class Phone{
     public  synchronized void sendEmail(){
@@ -33,8 +35,7 @@ public class Lock8 {
 }
 
 ```
-
-**情况2：sendEmail故意停3秒？，请问先打印邮件还是短信 ? **
+**情况2：sendEmail故意停3秒？，请问先打印邮件还是短信 ?** 
 ```java
 class Phone{
     public  synchronized void sendEmail(){
@@ -100,7 +101,7 @@ public class Lock8 {
     }
 }
 ```
-**情况4：有2部phone**_**，**_**请问先打印邮件还是短信 ? **
+ **情况4：有2部phone , 请问先打印邮件还是短信 ?**
 ```java
 class Phone{
     public  synchronized void sendEmail(){
@@ -137,7 +138,7 @@ public class Lock8 {
     }
 }
 ```
-**情况5：有2个静态同步方法，有一部phone_，_请问先打印邮件还是短信 ? **
+**情况5：有2个静态同步方法，有一部phone ，请问先打印邮件还是短信 ?**
 ```java
 class Phone{
     public  static synchronized void sendEmail(){
@@ -175,7 +176,7 @@ public class Lock8 {
 }
 
 ```
-**情况6：有2个静态同步方法，有两部phone_，_请问先打印邮件还是短信 ? **
+**情况6：有2个静态同步方法，有两部phone，请问先打印邮件还是短信 ?**
 ```java
 
 class Phone{
@@ -214,7 +215,7 @@ public class Lock8 {
     }
 }
 ```
-**情况7：有1个静态同步方法，1个普通同步方法，有1部phone_，_请问先打印邮件还是短信 ? **
+**情况7：有1个静态同步方法，1个普通同步方法，有1部phone_，_请问先打印邮件还是短信 ?**
 ```java
 class Phone{
     public  static synchronized void sendEmail(){
@@ -254,7 +255,7 @@ public class Lock8 {
 
 ```
 
-**情况8：有1个静态同步方法，1个普通同步方法，有2部phone_，_请问先打印邮件还是短信 ? **
+**情况8：有1个静态同步方法，1个普通同步方法，有2部phone_，_请问先打印邮件还是短信 ?**
 ```java
 class Phone{
     public  static synchronized void sendEmail(){
