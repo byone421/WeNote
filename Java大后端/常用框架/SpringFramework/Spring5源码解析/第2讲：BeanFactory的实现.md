@@ -1,5 +1,5 @@
 # BeanFactory的实现
-
+[TOC]
 其实beanFactory的实现类我们之前看到一个，他就是DefaultListableBeanFactory。
 
 ```java

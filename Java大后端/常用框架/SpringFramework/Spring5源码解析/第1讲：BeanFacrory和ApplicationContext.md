@@ -1,4 +1,5 @@
 # BeanFacrory和ApplicationContext
+[TOC]
 借助SpringBoot的引导类来讲BeanFactory 与 ApplicationContext 的区别
 ```java
 ConfigurableApplicationContext context = SpringApplication.run(A01.class, args);

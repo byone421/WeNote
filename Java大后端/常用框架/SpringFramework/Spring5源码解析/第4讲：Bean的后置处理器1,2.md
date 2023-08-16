@@ -1,4 +1,5 @@
 # Bean的后置处理器1,2
+[TOC]
 前面说过Bean的后置处理器主要是为Bean的生命周期的各个阶段提供扩展。
 我们也提过主要的6个扩展点：实例化前后，依赖注入阶段，初始化前后，销毁之前。
 这一节主要讲解一些常用的后置处理器，先来看代码：
@@ -159,14 +160,14 @@ ConfigurationPropertiesBindingPostProcessor.register(context.getDefaultListableB
 # @Autowired bean后置处理器的执行分析
 这里主要是对AutowiredAnnotationBeanPostProcessor的分析。
 使用registerSingleton注册单例，会认为bean是一个成品的bean。不会在对bean进行创建过程，依赖注入，初始化的操作。
-```cpp
+```java
 public class DigInAutowired {
-public static void main(String[] args) throws Throwable {
-    DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
-    beanFactory.registerSingleton("bean2", new Bean2()); // 创建过程,依赖注入,初始化
-    beanFactory.registerSingleton("bean3", new Bean3());
-    beanFactory.setAutowireCandidateResolver(new ContextAnnotationAutowireCandidateResolver()); // @Value
-}
+    public static void main(String[] args) throws Throwable {
+        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+        beanFactory.registerSingleton("bean2", new Bean2()); // 创建过程,依赖注入,初始化
+        beanFactory.registerSingleton("bean3", new Bean3());
+        beanFactory.setAutowireCandidateResolver(new ContextAnnotationAutowireCandidateResolver()); // @Value
+    }
 }
 ```
 为了研究AutowiredAnnotationBeanPostProcessor 我们手动使用他，处理的方法就是postProcessProperties
@@ -287,3 +288,18 @@ System.out.println(o);
  Object o2 = beanFactory.doResolveDependency(dd3, null, null, null);
  System.out.println(o2);
 ```
+# 总结
+#### 后处理器作用
+
+1. [@Autowired ](/Autowired ) 等注解的解析属于 bean 生命周期阶段（依赖注入, 初始化）的扩展功能，这些扩展功能由 bean 后处理器来完成 
+2. 每个后处理器各自增强什么功能 
+   - AutowiredAnnotationBeanPostProcessor 解析 [@Autowired ](/Autowired ) 与 [@Value ](/Value ) 
+   - CommonAnnotationBeanPostProcessor 解析 @Resource、@PostConstruct、[@PreDestroy ](/PreDestroy ) 
+   - ConfigurationPropertiesBindingPostProcessor 解析 @ConfigurationProperties
+3. 另外 ContextAnnotationAutowireCandidateResolver 负责获取 [@Value ](/Value ) 的值，解析 @Qualifier、泛型、[@Lazy ](/Lazy ) 等 
+#### @Autowired bean 后处理器运行分析
+
+1. AutowiredAnnotationBeanPostProcessor.findAutowiringMetadata 用来获取某个 bean 上加了 [@Value ](/Value ) [@Autowired ](/Autowired ) 的成员变量，方法参数的信息，表示为 InjectionMetadata 
+2. InjectionMetadata 可以完成依赖注入
+3. InjectionMetadata 内部根据成员变量，方法参数封装为 DependencyDescriptor 类型
+4. 有了 DependencyDescriptor，就可以利用 beanFactory.doResolveDependency 方法进行基于类型的查找

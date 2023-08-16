@@ -1,4 +1,5 @@
 # Bean的生命周期
+[TOC]
 这里准备好了一个Springboot引导类
 ```java
 @SpringBootApplication
@@ -171,3 +172,30 @@ static class MyBeanFactory {
 初始化 java.lang.Object@27fa135a
 
 ```
+# 总结
+![image.png](https://cdn.nlark.com/yuque/0/2023/png/12600036/1687791872573-0bb680a7-c25c-40c5-bd36-578314d5e424.png#averageHue=%23fcfcfc&clientId=u2b34724b-e034-4&from=paste&height=117&id=u968ea1cc&originHeight=175&originWidth=1299&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=12165&status=done&style=none&taskId=u5ed527d6-38ba-458a-8e55-aebbf7e5afe&title=&width=866)
+创建前后的增强
+
+- postProcessBeforeInstantiation 
+   - 这里返回的对象若不为 null 会替换掉原本的 bean，并且仅会走 postProcessAfterInitialization 流程
+- postProcessAfterInstantiation 
+   - 这里如果返回 false 会跳过依赖注入阶段
+
+依赖注入前的增强
+
+- postProcessProperties 
+   - 如 @Autowired、@Value、[@Resource ](/Resource ) 
+
+初始化前后的增强
+
+- postProcessBeforeInitialization 
+   - 这里返回的对象会替换掉原本的 bean
+   - 如 @PostConstruct、@ConfigurationProperties
+- postProcessAfterInitialization 
+   - 这里返回的对象会替换掉原本的 bean
+   - 如代理增强
+
+销毁之前的增强
+
+- postProcessBeforeDestruction 
+   - 如 [@PreDestroy ](/PreDestroy ) 
