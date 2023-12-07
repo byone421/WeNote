@@ -1,7 +1,7 @@
 # 简单介绍
 官网：https://redis.io/docs/manual/transactions
 可以一次执行多个命令所有命令都会序列化，本质是一组命令的集合。一个事务中的
-按顺序地串行化执行而不会被其它命令插入，不许加寨
+按顺序地串行化执行而不会被其它命令插入，不许加塞
 一个队列中，一次性、顺序性、排他性的执行一系列命令
 # Redis事务vs数据库事务
 ![image.png](https://cdn.nlark.com/yuque/0/2023/png/12600036/1692447810539-46fdbd9e-c773-4e50-86fb-b5b78b9fb962.png#averageHue=%23eaedf5&clientId=u5ee178e2-d53b-4&from=paste&height=208&id=u6deb38f1&originHeight=312&originWidth=1614&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=136869&status=done&style=none&taskId=u66abc4a7-6e34-4cc7-baf2-f7399b58efe&title=&width=1076)

@@ -111,7 +111,7 @@ SLAVEOF  no  one
 值得注意的是，从服务器在初始化同步过程时可以选择全量复制（通过RDB文件）或增量复制（通过传输写命令）。这取决于从服务器在SYNC命令之前是否已经与主服务器建立了连接。如果从服务器与主服务器的连接已断开，它将执行全量复制；否则，它将执行增量复制
 **心跳持续，保持通信**
 repl-ping-replica-period 10
-![image.png](https://cdn.nlark.com/yuque/0/2023/png/12600036/1692541082770-0d8706ba-b30a-49a2-bdec-22c9d6e1e75b.png#averageHue=%2394a693&clientId=u841d4ba2-19db-4&from=paste&height=184&id=u239fdc57&originHeight=276&originWidth=1001&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=81194&status=done&style=none&taskId=uab704509-fabc-4855-ab88-8aa82a73861&title=&width=667.3333333333334)
+![image.png](https://cdn.nlark.com/yuque/0/2023/png/12600036/1692541082770-0d8706ba-b30a-49a2-bdec-22c9d6e1e75b.png#averageHue=%2394a693&clientId=u841d4ba2-19db-4&from=paste&height=177&id=u239fdc57&originHeight=276&originWidth=1001&originalType=binary&ratio=1.5&rotation=0&showTitle=false&size=81194&status=done&style=none&taskId=uab704509-fabc-4855-ab88-8aa82a73861&title=&width=643.3333740234375)
 **从机下线，重新续传**
 master会检查backlog里面的offset，master和slave都会保存一个复制的offset还有一个masterId
 offset是保存在backlog中的。Master只会把已经复制的offset后面的数据复制给Slave，类似断点续传
