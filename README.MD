@@ -1,2 +1,9 @@
-这是一个学习笔记或者总结的仓库，来自视频学习或个人总结
-，做一个所学知识复习和共享。
+欢迎访问我的博客！在这里分享我的知识、经验和项目。
+
+博客地址: https://byone421.github.io
+
+GitHub: https://github.com/byone421
+
+CSDN: https://blog.csdn.net/qq_33043795
+
+Email: zenonewrong@gmail.com
