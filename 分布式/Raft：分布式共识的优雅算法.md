@@ -77,11 +77,11 @@ Raft协议是主从架构模式。需要通过投票机制来选出主节点（l
 
 对于一个RequestVote RPC（请求投票）包含的信息如下图：
 
-![](.\res\requestvoterpc.png)![](res\请求投票.png)
+![](./res/requestvoterpc.png)![](./res/请求投票.png)
 
 对于一个AppendEntries RPC（追加日志 / 心跳）包含的信息如下图：
 
-![](res\appendrpc.png)![](.\res\追加日志.png)
+![](./res/appendrpc.png)![](./res/追加日志.png)
 
 
 
