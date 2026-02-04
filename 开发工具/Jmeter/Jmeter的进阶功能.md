@@ -310,6 +310,32 @@ bin目录点击运行jmeter.bat，启动后能看到能连接到从机
 ![](https://cdn.nlark.com/yuque/0/2022/png/12600036/1670506642752-862c3228-13ed-475c-93f8-647a89c731db.png)
 
 
+
+## 汉化图形化报告
+默认生成的生成图形化报告是英文的，如果想替换成中文需要一些额外的操作
+
+### 步骤
+1. 下载汉化模版Gitee (推荐):[https://gitee.com/smooth00/jmeter-cn-report-template](https://gitee.com/smooth00/jmeter-cn-report-template)
+2. 备份原文件夹： 进入你的 JMeter 安装目录，找到 `bin/report-template`，将其改名为 `report-template_bak` 作为备份。
+3. 替换模板： 将下载好的汉化包解压，把里面的 `report-template` 文件夹整个复制到 JMeter 的 `bin` 目录下
+4. **重新生成报告：** 再次运行你的命令（记得先删除旧生成报告）
+
+<!-- 这是一张图片，ocr 内容为： -->
+![](https://cdn.nlark.com/yuque/0/2026/png/12600036/1770168438909-e55294c9-0915-4f09-9ac0-284aaf4c714f.png)
+
+## 样式可以自定义样式吗
+JMeter 自带的 HTML 图形化报告，本身不太适合“深度样式定制”，更多是偏「自动生成 + 统一风格」 ，因为JMeter 本质是 数据生产者，不是 BI 工具。真正“高度可定制”方式是利用Jmeter产出数据+其他可视化工具。
+
+当然如果愿意花时间去修改去JMeter 自带的图形化报告也是可以的。这个需要自己一点点调整，自己检查报告的HTML的代码和使用的样式，然后找到对应的样式自己去修改。本人没有并没有深入研究，感兴趣的同学可以自行尝试一下。这里只给出2个参考方向，你可以通过以下几个层面进行自定义：
+
+1. **修改配色与图标（CSS 层**）
+
+所有的样式定义都在 `bin/report-template/content/css`目录下，可以通过修改样式来调整。
+
+2. **自定义展示内容（模板层）**
+
+JMeter 使用了 FreeMarker (.fmkr) 模板引擎 `bin/report-template/*.html.fmkr` 以及`content/pages/*.html.fmk`。需要了解FreeMarker的语法以及模版和界面对应的元素。
+
 # 8.参考
 
 参考视频：https://www.bilibili.com/video/BV1ty4y1q72g
